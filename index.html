@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html lang="en">
+<?php
+$db = new mysqli("localhost","root","1755","board"); //ip,id,pw,db
+$query = "select * from board";
+$res = $db->query($query);
+echo($res->num_rows);
+?>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="Title" content="(주)웨보노믹스">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="(주)웨보노믹스">
+    <meta property="og:url" content="https://newwebon.webonomics.co.kr">
+    <meta property="og:site_name" content="(주)웨보노믹스">
+    <meta name="Description" content="Since 1999, 웹에이전시 24년차 믿을 수 있는 기업 1999년 순수하게 웹에이전시로 출발한 ㈜웨보노믹스입니다.">
+    <meta property="og:description" content="Since 1999, 웹에이전시 24년차 믿을 수 있는 기업 1999년 순수하게 웹에이전시로 출발한 ㈜웨보노믹스입니다.">
+    <meta name="Author" content="웨보노믹스">
+    <meta name="Keywords" content="웨보노믹스,웹에이전시,웹개발">
+    <meta property="og:image" content="https://newwebon.webonomics.co.kr/storage/config/2D6SomUi_e45c1d.png">
+    <link rel="icon" href="https://newwebon.webonomics.co.kr/storage/config/Nja1Gni7_b7426e.ico" type="image/x-icon">
+    <title>(주)웨보노믹스</title>
+    <script src="/js/jquery-3.7.1.min.js?ver=231011"></script>
+    <script src="/js/jquery-ui.min.js?ver=231011"></script>
+    <script src="/js/app.js?ver=231011"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+    <link rel="stylesheet" href="/css/app.css?ver=231011">
+    <link rel="stylesheet" href="/css/font-awesome/css/font-awesome.min.css?ver=231011">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="/js/swiper/swiper.min.css">
+    <script src="/js/swiper/swiper.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.fancybox.js?v=2.1.4"></script>
+    <link rel="stylesheet" type="text/css" href="/js/jquery.fancybox.css?v=2.1.4" media="screen">
+    <link rel="stylesheet" href="/css/template/menu/default-dropdown/reset.css">
+    <link rel="stylesheet" href="/css/template/menu/default-dropdown/style.css">
+    <script>
+
+        jQuery(function ($) {
+
+
+            //스크롤 따라다니는 메뉴박스 만들기
+            $(window).scroll(function () {
+
+
+                if ($(this).scrollTop() > 200) {
+                    $(".at-header").addClass('fixed');
+
+                }
+                else {
+                    $(".at-header").removeClass('fixed');
+                }
+
+            });
+
+
+
+            $(".at-open-menu").click(function (e) {
+                $(".all_menu_wrap").animate({ right: 0 }, '300');
+                $(".all_menu_close_btn").show();
+            });
+
+
+            $(".all_menu_close,.all_menu_close_btn").click(function (e) {
+                $(".all_menu_wrap").animate({ right: "-100%" }, '300');
+                $(".all_menu_close_btn").hide();
+            });
+
+
+            var bw = $("body").width();
+            $(window).resize(function () {
+                bw = $("body").width();
+            });
+
+            if (bw >= 992) {
+
+
+            } else {
+
+                $(".all_menu_box li .depth01").click(function () {
+                    $(this).parent().toggleClass("active").siblings().removeClass("active");
+                });
+
+            }
+
+
+            $(".history_year").click(function () { //Fire the click event 
+
+
+                $(this).parent("div").find(".history_content").slideToggle();
+                $(this).find("i").toggleClass("minus");
+                $(this).find("span").toggleClass("active");
+
+
+                return false; //prevent page scrolling on tab click
+            });
+
+
+            $(".history_tabbox").hide(); // Hide all tab content divs by default
+            $(".history_tabbox#history4").show(); // Show the first div of tab content by default
+
+            $(".history_tab ul li a").click(function () { //Fire the click event
+
+                var activeTab = $(this).attr("href"); // Catch the click link
+                $(".history_tab ul li a").removeClass("active"); // Remove pre-highlighted link
+                $(this).addClass("active"); // set clicked link to highlight state
+                $(".history_tabbox").hide(); // hide currently visible tab content div 
+                $(activeTab).fadeIn(); // show the target tab content div by matching clicked link.
+
+                return false; //prevent page scrolling on tab click
+            });
+
+        });
+
+        $(document).ready(function () {
+
+            $(".fancybox").fancybox({
+                maxWidth: 658,
+                maxHeight: 710,
+                fitToView: false,
+                width: '100%',
+                height: '100%',
+                autoSize: false,
+                autoCenter: false,
+                closeClick: false,
+                openEffect: 'none',
+                closeEffect: 'none'
+            });
+
+            $(".history_box.active a.history_year").trigger("click");
+
+
+        });
+    </script>
+</head>
+
+<body>
+
+
+
+    <script>
+
+        jQuery(function ($) {
+
+
+
+            $(".at-open-menu").click(function (e) {
+                $(".all_menu_wrap").animate({ right: 0 }, '300');
+                $(".all_menu_close_btn").show();
+            });
+
+
+            $(".all_menu_close,.all_menu_close_btn").click(function (e) {
+                $(".all_menu_wrap").animate({ right: "-100%" }, '300');
+                $(".all_menu_close_btn").hide();
+            });
+
+
+
+
+        });
+    </script>
+
+    <!-- 전체 메뉴 -->
+    <button class="all_menu_close_btn"></button>
+    <div class="all_menu_wrap">
+        <div class="at-container">
+            <div class="all_menu_close"></div>
+            <div class="all_menu_box">
+
+                <div class="all_menu_btn_set">
+                    <a href="/login">로그인</a>
+                    <a href="/register">사용자가입</a>
+                    <a href="/page/notice">공지사항</a>
+                </div>
+
+                <ul>
+                    <li>
+                        <div class="depth01"><a href="/page/intro">회사소개</a></div><a href="/page/intro">
+                        </a>
+                        <ul class="depth02"><a href="/page/intro">
+                            </a>
+                            <li><a href="/page/intro"></a><a href="/page/intro">회사소개</a></li>
+
+                            <li><a href="history.html">회사연혁</a></li>
+
+                            <li><a href="/page/organization">조직도</a></li>
+
+                            <li><a href="location.html">오시는 길</a></li>
+
+                        </ul>
+                    </li>
+                    <li>
+                        <div class="depth01"><a href="/page/homepage">서비스</a></div><a href="/page/homepage">
+                        </a>
+                        <ul class="depth02"><a href="/page/homepage">
+                            </a>
+                            <li><a href="/page/homepage"></a><a href="/page/homepage">홈페이지 제작</a></li>
+
+                            <li><a href="/page/shoppingmall">쇼핑몰 제작/운영</a></li>
+
+                            <li><a href="/page/solution">솔루션 개발</a></li>
+
+                            <li><a href="/page/mobileapp">모바일 앱 개발</a></li>
+
+                        </ul>
+                    </li>
+                    <li>
+                        <div class="depth01"><a href="/portfolio">포트폴리오</a></div><a href="/portfolio">
+                            <ul class="depth02">
+                            </ul>
+                        </a>
+                    </li><a href="/portfolio">
+                    </a>
+                    <li><a href="/portfolio"></a>
+                        <div class="depth01"><a href="/portfolio"></a><a href="/page/request/form">견적문의</a></div><a
+                            href="/page/request/form">
+                            <ul class="depth02">
+                            </ul>
+                        </a>
+                    </li><a href="/page/request/form">
+                    </a>
+                    <li><a href="/page/request/form"></a>
+                        <div class="depth01"><a href="/page/request/form"></a><a href="/support">수정의뢰</a></div><a
+                            href="/support">
+                            <ul class="depth02">
+                            </ul>
+                        </a>
+                    </li><a href="/support">
+                    </a>
+                </ul><a href="/support">
+
+                </a>
+            </div><a href="/support">
+            </a>
+        </div><a href="/support">
+        </a>
+    </div><a href="/support">
+        <!-- 전체 메뉴 -->
+
+
+    </a>
+    <div class="wrap"><a href="/support">
+
+            <!-- header -->
+        </a>
+        <div class="at-header"><a href="/support">
+            </a>
+            <div class="main_wrap"><a href="/support">
+                </a>
+                <h1><a href="/support"></a><a href="/"><img
+                            src="https://newwebon.webonomics.co.kr/storage/config/KglCr0je_80de1a.png" alt=""></a></h1>
+
+                <!-- gnb -->
+                <div class="at-menu">
+                    <ul class="gnb">
+                        <li><a href="/page/intro" class="parent"><span>회사소개</span></a>
+                            <ul class="snb">
+                                <li><a href="/page/intro">회사소개</a></li>
+
+                                <li><a href="history.html">회사연혁</a></li>
+
+                                <li><a href="/page/organization">조직도</a></li>
+
+                                <li><a href="location.html">오시는 길</a></li>
+
+                                <li><a href="board/list.php">게시판 작성</a></li>
+
+                            </ul>
+                        </li>
+                        <li><a href="/page/homepage" class="parent"><span>서비스</span></a>
+                            <ul class="snb">
+                                <li><a href="/page/homepage">홈페이지 제작</a></li>
+
+                                <li><a href="/page/shoppingmall">쇼핑몰 제작/운영</a></li>
+
+                                <li><a href="/page/solution">솔루션 개발</a></li>
+
+                                <li><a href="/page/mobileapp">모바일 앱 개발</a></li>
+
+                            </ul>
+                        </li>
+                        <li><a href="/portfolio" class="parent"><span>포트폴리오</span></a>
+                            <ul class="snb">
+                            </ul>
+                        </li>
+                        <li><a href="/page/request/form" class="parent"><span>견적문의</span></a>
+                            <ul class="snb">
+                            </ul>
+                        </li>
+                        <li><a href="/support" class="parent"><span>수정의뢰</span></a>
+                            <ul class="snb">
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <!-- gnb -->
+
+
+                <div class="at-open-menu">
+                    <span class="line"></span>
+                    <span class="line"></span>
+                    <span class="line"></span>
+                </div>
+
+            </div>
+        </div>
+        <!-- header -->
+
+
+
+        <!--<div class="main_section01_link">
+                    <a href="/page/request/form">
+                    <div class="icon"><img src="/img/paper_plane.png" alt=""></div>
+                    <p>빠른 견적문의</p>
+                    </a>
+                    </div>-->
+
+        <!-- <div class="wrap"> -->
+
+        <!-- <div class=""> -->
+
+
+        <!-- main start -->
+
+        <!-- section01-->
+        <div class="main_wrap">
+            <section class="main_section01">
+
+                <!-- <div class="main_section01_link">
+             <a href="/page/request/form">
+              <div class="icon"><img src="/img/paper_plane.png" alt=""></div>
+              <p>빠른 견적문의</p>
+             </a>
+             </div>-->
+
+
+                <div class="img"><img src="./img/main_visual01.png" alt=""></div>
+                <div class="main_section01_txt">
+                    <div class="txt"><img src="./img/main_txt01.png" alt=""></div>
+                    <div class="circle"><img src="./img/main_txt_circle.png" alt=""></div>
+                </div>
+
+                <ul class="main_section01_btn">
+                    <li><a href="/storage/웨보노믹스 회사소개서.pdf" target="_blank">
+                            <h3>웨보노믹스 소개서</h3>
+                            <p>웹의 활용지수가 기업의 경쟁력이 되어가고 있습니다.</p>
+                        </a></li>
+                    <li><a href="/storage/웨보노믹스 포트폴리오.pdf" target="_blank">
+                            <h3>포트폴리오</h3>
+                            <p>고객님과 함께 동행 할 것을 약속드립니다.</p>
+                        </a></li>
+                </ul>
+            </section>
+        </div>
+        <!-- section01-->
+
+
+        <!-- section02-->
+        <div class="main_wrap">
+            <section class="main_section02">
+
+                <!--service slide-->
+                <div class="serviceSlide swiper-container-horizontal">
+                    <ul class="swiper-wrapper"
+                        style="transition-duration: 0ms; transform: translate3d(-1062px, 0px, 0px);">
+                        <li class="swiper-slide swiper-slide-duplicate swiper-slide-prev" data-swiper-slide-index="3"
+                            style="width: 1062px;">
+                            <div class="service_box slide04">
+                                <div class="service_box_bg"></div>
+                                <div class="eng">SERVICE</div>
+                                <div class="txt01"><strong>고객님이 필요로 하는 기능,</strong><br><strong class="orangeTxt">맞춤형
+                                        앱</strong> 을 개발합니다.</div>
+                                <div class="txt02">Mobile First, 이제는 필수입니다.<br> 안드로이드/iOS 애플리케이션을 제작합니다. </div>
+                                <div class="txt03">사용자의 요구사항을 반영하여 모바일 앱 기획, 개발 및 서비스 운영까지 서비스 합니다.</div>
+                                <a href="/page/mobileapp" class="more">자세히보기</a>
+                            </div>
+                        </li>
+                        <li class="swiper-slide swiper-slide-active" data-swiper-slide-index="0" style="width: 1062px;">
+                            <div class="service_box slide01">
+                                <div class="service_box_bg"></div>
+                                <div class="eng">SERVICE</div>
+                                <div class="txt01"><strong>최소한의 비용</strong>으로<br><strong class="orangeTxt">나만의
+                                        홈페이지</strong>를 만들어 보세요.</div>
+                                <div class="txt02">모든 제작과정에는 담당 기획자가 배정되어<br>완료 때까지 책임 진행을 합니다. </div>
+                                <div class="txt03">담당자는 계약과 자료수집, 정리분류, 사이트구조도 작성, 메인화면 기획, 페이지<br>내용 편집, 고객님과의 디자인 확정,
+                                    완료 후 네이버와 다음 등 포털에 사이트 <br>등록까지의 모든 과정에서 고객님과 긴밀하게 연결을 유지하고 있습니다.</div>
+                                <a href="/page/homepage" class="more">자세히보기</a>
+                            </div>
+                        </li>
+                        <li class="swiper-slide swiper-slide-next" data-swiper-slide-index="1" style="width: 1062px;">
+                            <div class="service_box slide02">
+                                <div class="service_box_bg"></div>
+                                <div class="eng">SERVICE</div>
+                                <div class="txt01"><strong>성공</strong>을 지원하는 <strong class="orangeTxt">쇼핑몰
+                                        구축</strong>,<br>신뢰를 코딩합니다.</div>
+                                <div class="txt02">웨보노믹스는 경북 시·군 전자상거래의<br>90%시장 점유율을 보유하고 있습니다.</div>
+                                <div class="txt03">2003년부터 경북 시·군의 전자상거래를 구축하여 왔으며 <br>2017년부터 구리농수산물도매시장의 전자상거래를 구축하며
+                                    수도권까지 진출하고 있습니다.</div>
+                                <a href="/page/shoppingmall" class="more">자세히보기</a>
+                            </div>
+                        </li>
+                        <li class="swiper-slide" data-swiper-slide-index="2" style="width: 1062px;">
+                            <div class="service_box slide03">
+                                <div class="service_box_bg"></div>
+                                <div class="eng">SERVICE</div>
+                                <div class="txt01"><strong>사용자 중심,</strong><br> <strong
+                                        class="orangeTxt">맞춤형솔루션</strong>을 개발합니다</div>
+                                <div class="txt02">웨보노믹스는 웹프로그램 개발, 웹솔루션 전문업체로<br> 전문화된 기술력과 다양한 제작실적을 보유한 업체입니다.</div>
+                                <div class="txt03">고객의 요구에 부응하고 경쟁에서 앞서갈 수 있도록 맞춤화된 웹 솔루션을 개발합니다.</div>
+                                <a href="/page/solution" class="more">자세히보기</a>
+                            </div>
+                        </li>
+                        <li class="swiper-slide swiper-slide-duplicate-prev" data-swiper-slide-index="3"
+                            style="width: 1062px;">
+                            <div class="service_box slide04">
+                                <div class="service_box_bg"></div>
+                                <div class="eng">SERVICE</div>
+                                <div class="txt01"><strong>고객님이 필요로 하는 기능,</strong><br><strong class="orangeTxt">맞춤형
+                                        앱</strong> 을 개발합니다.</div>
+                                <div class="txt02">Mobile First, 이제는 필수입니다.<br> 안드로이드/iOS 애플리케이션을 제작합니다. </div>
+                                <div class="txt03">사용자의 요구사항을 반영하여 모바일 앱 기획, 개발 및 서비스 운영까지 서비스 합니다.</div>
+                                <a href="/page/mobileapp" class="more">자세히보기</a>
+                            </div>
+                        </li>
+                        <li class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-active"
+                            data-swiper-slide-index="0" style="width: 1062px;">
+                            <div class="service_box slide01">
+                                <div class="service_box_bg"></div>
+                                <div class="eng">SERVICE</div>
+                                <div class="txt01"><strong>최소한의 비용</strong>으로<br><strong class="orangeTxt">나만의
+                                        홈페이지</strong>를 만들어 보세요.</div>
+                                <div class="txt02">모든 제작과정에는 담당 기획자가 배정되어<br>완료 때까지 책임 진행을 합니다. </div>
+                                <div class="txt03">담당자는 계약과 자료수집, 정리분류, 사이트구조도 작성, 메인화면 기획, 페이지<br>내용 편집, 고객님과의 디자인 확정,
+                                    완료 후 네이버와 다음 등 포털에 사이트 <br>등록까지의 모든 과정에서 고객님과 긴밀하게 연결을 유지하고 있습니다.</div>
+                                <a href="/page/homepage" class="more">자세히보기</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+
+
+                <div class="serviceSlide_control">
+                    <div class="serviceSlide-pagination swiper-pagination-clickable swiper-pagination-bullets">
+                        <div class="swiper-pagination-bullet swiper-pagination-bullet-active"><span>01</span></div>
+                        <div class="swiper-pagination-bullet"><span>02</span></div>
+                        <div class="swiper-pagination-bullet"><span>03</span></div>
+                        <div class="swiper-pagination-bullet"><span>04</span></div>
+                    </div>
+                    <a class="serviceSlide-prev"></a>
+                    <a class="serviceSlide-next"></a>
+                </div>
+                <!--service slide-->
+
+            </section>
+        </div>
+
+
+        <script type="text/javascript">
+
+            var bullet = ['01', '02', '03', '04'];
+            var serviceSlide = new Swiper('.serviceSlide', {
+                slidesPerView: 1,  //한번에 보여지는 슬라이드 개수
+                spaceBetween: 0,  //마진값			  
+                initialSlide: 0, //시작위치값
+                roundLengths: true,	//일반 해상도 화면에서 텍스트가 흐려지는 것을 방지하기 위해 슬라이드 너비와 높이 값을 반올림
+                loop: true,
+
+                pagination: { // 호출(pager) 여부          
+                    el: ".serviceSlide-pagination", //버튼을 담을 태그 설정          
+                    clickable: true, // 버튼 클릭 여부   
+                    renderBullet: function (index, className) {
+                        return '<div class="' + className + '"><span>' + (bullet[index]) + '</span></div>';
+                    }
+
+                },
+                navigation: {   // 버튼 
+                    nextEl: ".serviceSlide-next",
+                    prevEl: ".serviceSlide-prev",
+                },
+
+            });
+        </script>
+
+        <!-- section02-->
+
+
+        <!-- section03-->
+        <section class="main_section03">
+            <div class="at-container">
+                <div class="mainTitle">
+                    <sub>MAINTENANCE</sub>
+                    <h2><strong>유지보수</strong> 진행현황</h2>
+                </div>
+
+                <div class="section03_btn">
+                    <a href="/support/form" class="more">유지보수 신청 <i class="fa fa-caret-right"></i></a>
+                    <a href="/support" class="more2">신청현황 더보기</a>
+                </div>
+                <ul class="maintenanceList">
+                    <li>
+                        <div class="date">11:52</div>
+                        <div class="title"><a href="/support/view?id=70695">[구리시 청년내일센터] 예약현황 문구 변경 추가요청 <i
+                                    class="fa fa-lock"></i></a></div>
+                        <div class="name">구리청***</div>
+                        <div class="stat"><i class="fa fa-clock"></i> 접수중</div>
+                    </li>
+                    <li>
+                        <div class="date">10:31</div>
+                        <div class="title"><a href="/support/view?id=70690">몽자앱 확인 요청 <i class="fa fa-lock"></i></a>
+                        </div>
+                        <div class="name">몽자 ***</div>
+                        <div class="stat"><i class="fa fa-clock"></i> 접수중</div>
+                    </li>
+                    <li>
+                        <div class="date">02-05</div>
+                        <div class="title"><a href="/support/view?id=70680">수정의뢰입니다 <i class="fa fa-lock"></i></a></div>
+                        <div class="name">웨보노***</div>
+                        <div class="stat"><i class="fa fa-clock"></i> 접수중</div>
+                    </li>
+                    <li>
+                        <div class="date">02-05</div>
+                        <div class="title"><a href="/support/view?id=70679">업무일지 - 팀장란 생성 요청 <i
+                                    class="fa fa-lock"></i></a></div>
+                        <div class="name">안동시***</div>
+                        <div class="stat"><i class="fa fa-clock"></i> 완료</div>
+                    </li>
+                    <li>
+                        <div class="date">02-05</div>
+                        <div class="title"><a href="/support/view?id=70678">청송농협 연혁페이지 수정부탁드립니다. <i
+                                    class="fa fa-lock"></i></a></div>
+                        <div class="name">청송농***</div>
+                        <div class="stat"><i class="fa fa-clock"></i> 완료</div>
+                    </li>
+                    <li>
+                        <div class="date">02-05</div>
+                        <div class="title"><a href="/support/view?id=70677">계산서 발행시 <i class="fa fa-lock"></i></a></div>
+                        <div class="name">안동간***</div>
+                        <div class="stat"><i class="fa fa-clock"></i> 접수중</div>
+                    </li>
+                    <li>
+                        <div class="date">02-05</div>
+                        <div class="title"><a href="/support/view?id=70672">홈페이지 내용 일부 수정 요청드립니다. <i
+                                    class="fa fa-lock"></i></a></div>
+                        <div class="name">안동농***</div>
+                        <div class="stat"><i class="fa fa-clock"></i> 처리중</div>
+                    </li>
+                    <li>
+                        <div class="date">02-05</div>
+                        <div class="title"><a href="/support/view?id=70671">상세페이지 등록요청 <i class="fa fa-lock"></i></a>
+                        </div>
+                        <div class="name">인터넷***</div>
+                        <div class="stat"><i class="fa fa-clock"></i> 처리중</div>
+                    </li>
+                    <li>
+                        <div class="date">02-02</div>
+                        <div class="title"><a href="/support/view?id=70662">개인정보처리방침 및 회원가입 개선 요청 <i
+                                    class="fa fa-lock"></i></a></div>
+                        <div class="name">서안동***</div>
+                        <div class="stat"><i class="fa fa-clock"></i> 완료</div>
+                    </li>
+                    <li>
+                        <div class="date">02-02</div>
+                        <div class="title"><a href="/support/view?id=70661">2023년도 지상파방송사업 재허가 의견청취 공모 <i
+                                    class="fa fa-lock"></i></a></div>
+                        <div class="name">안동M***</div>
+                        <div class="stat"><i class="fa fa-clock"></i> 완료</div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <!-- section03-->
+
+
+
+        <!-- section04-->
+        <section class="main_section04">
+            <div class="mainTitle">
+                <sub>PORTPOLIO</sub>
+                <h2>이미 많은 고객분들이 <span class="orangeTxt">웨보노믹스</span>와 함께 하고 있습니다.</h2>
+            </div>
+
+            <!--portfolio slide-->
+            <div class="portfolioSlide01_wrap">
+
+                <!-- <div class="portfolioSlide01_control">  
+                <a class="portfolioSlide-prev">prev</a>
+                <a class="portfolioSlide-next">next</a>
+                </div> -->
+
+                <div class="portfolioSlide01 portfolioSlide swiper-container-horizontal swiper-container-rtl" dir="rtl">
+                    <!-- dir="rtl"-->
+                    <ul class="swiper-wrapper"
+                        style="transform: translate3d(1650px, 0px, 0px); transition-duration: 0ms;">
+                        <li class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-active"
+                            data-swiper-slide-index="1" style="width: 275px;"><img
+                                src="https://newwebon.webonomics.co.kr/storage/client/thumb-27bbe892_NONE_400.jpg">
+                            <div class="hover">
+                                <div class="hover_in">
+                                    <div class="site_name">안동시공무원노동조합</div>
+                                    <div class="site_type"><span>관공서</span></div>
+                                    <div class="site_link"><a href="http://acsu.or.kr" target="_blank">acsu.or.kr<i
+                                                class="fa fa-external-link-alt"></i></a></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-next"
+                            data-swiper-slide-index="2" style="width: 275px;"><img
+                                src="https://newwebon.webonomics.co.kr/storage/client/thumb-41c0f296_screencapture-gsnb-or-kr-2024-02-06-10_08_06_400.jpg">
+                            <div class="hover">
+                                <div class="hover_in">
+                                    <div class="site_name">금성노인복지관</div>
+                                    <div class="site_type"><span>단체</span></div>
+                                    <div class="site_link"><a href="http://www.gsnb.or.kr"
+                                            target="_blank">www.gsnb.or.kr<i class="fa fa-external-link-alt"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="3"
+                            style="width: 275px;"><img
+                                src="https://newwebon.webonomics.co.kr/storage/client/thumb-07ad6fef_screencapture-mgse-or-kr-2024-02-06-10_14_09_400.jpg">
+                            <div class="hover">
+                                <div class="hover_in">
+                                    <div class="site_name">문경시 사회적기업 통합안내 홈페이지</div>
+                                    <div class="site_type"><span>단체</span></div>
+                                    <div class="site_link"><a href="http://mgse.or.kr" target="_blank">mgse.or.kr<i
+                                                class="fa fa-external-link-alt"></i></a></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="4"
+                            style="width: 275px;"><img
+                                src="https://newwebon.webonomics.co.kr/storage/client/thumb-02e55750_screencapture-everchem-kr-2024-02-06-10_15_53_400.jpg">
+                            <div class="hover">
+                                <div class="hover_in">
+                                    <div class="site_name">태성산업-Evercolor</div>
+                                    <div class="site_type"><span>기업</span></div>
+                                    <div class="site_link"><a href="http://everchem.kr" target="_blank">everchem.kr<i
+                                                class="fa fa-external-link-alt"></i></a></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="5"
+                            style="width: 275px;"><img
+                                src="https://newwebon.webonomics.co.kr/storage/client/thumb-4cf25e8f_screencapture-grmall-cyso-co-kr-2024-02-06-10_16_31_400.jpg">
+                            <div class="hover">
+                                <div class="hover_in">
+                                    <div class="site_name">고령몰 사이소 시군통합</div>
+                                    <div class="site_type"><span>관공서</span></div>
+                                    <div class="site_link"><a href="http://grmall.cyso.co.kr"
+                                            target="_blank">grmall.cyso.co.kr<i class="fa fa-external-link-alt"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="swiper-slide swiper-slide-prev" data-swiper-slide-index="0" style="width: 275px;">
+                            <img
+                                src="https://newwebon.webonomics.co.kr/storage/client/thumb-75171c8f_screencapture-icanu-webonomics-co-kr-index-php-2024-02-06-10_02_09_400.jpg">
+                            <div class="hover">
+                                <div class="hover_in">
+                                    <div class="site_name">국립안동대학교 대외협력본부</div>
+                                    <div class="site_type"><span>학교</span></div>
+                                    <div class="site_link"><a href="http://icanu.webonomics.co.kr"
+                                            target="_blank">icanu.webonomics.co.kr<i
+                                                class="fa fa-external-link-alt"></i></a></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="swiper-slide swiper-slide-active" data-swiper-slide-index="1" style="width: 275px;">
+                            <img src="https://newwebon.webonomics.co.kr/storage/client/thumb-27bbe892_NONE_400.jpg">
+                            <div class="hover">
+                                <div class="hover_in">
+                                    <div class="site_name">안동시공무원노동조합</div>
+                                    <div class="site_type"><span>관공서</span></div>
+                                    <div class="site_link"><a href="http://acsu.or.kr" target="_blank">acsu.or.kr<i
+                                                class="fa fa-external-link-alt"></i></a></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="swiper-slide swiper-slide-next" data-swiper-slide-index="2" style="width: 275px;">
+                            <img
+                                src="https://newwebon.webonomics.co.kr/storage/client/thumb-41c0f296_screencapture-gsnb-or-kr-2024-02-06-10_08_06_400.jpg">
+                            <div class="hover">
+                                <div class="hover_in">
+                                    <div class="site_name">금성노인복지관</div>
+                                    <div class="site_type"><span>단체</span></div>
+                                    <div class="site_link"><a href="http://www.gsnb.or.kr"
+                                            target="_blank">www.gsnb.or.kr<i class="fa fa-external-link-alt"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="swiper-slide" data-swiper-slide-index="3" style="width: 275px;"><img
+                                src="https://newwebon.webonomics.co.kr/storage/client/thumb-07ad6fef_screencapture-mgse-or-kr-2024-02-06-10_14_09_400.jpg">
+                            <div class="hover">
+                                <div class="hover_in">
+                                    <div class="site_name">문경시 사회적기업 통합안내 홈페이지</div>
+                                    <div class="site_type"><span>단체</span></div>
+                                    <div class="site_link"><a href="http://mgse.or.kr" target="_blank">mgse.or.kr<i
+                                                class="fa fa-external-link-alt"></i></a></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="swiper-slide" data-swiper-slide-index="4" style="width: 275px;"><img
+                                src="https://newwebon.webonomics.co.kr/storage/client/thumb-02e55750_screencapture-everchem-kr-2024-02-06-10_15_53_400.jpg">
+                            <div class="hover">
+                                <div class="hover_in">
+                                    <div class="site_name">태성산업-Evercolor</div>
+                                    <div class="site_type"><span>기업</span></div>
+                                    <div class="site_link"><a href="http://everchem.kr" target="_blank">everchem.kr<i
+                                                class="fa fa-external-link-alt"></i></a></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="swiper-slide" data-swiper-slide-index="5" style="width: 275px;"><img
+                                src="https://newwebon.webonomics.co.kr/storage/client/thumb-4cf25e8f_screencapture-grmall-cyso-co-kr-2024-02-06-10_16_31_400.jpg">
+                            <div class="hover">
+                                <div class="hover_in">
+                                    <div class="site_name">고령몰 사이소 시군통합</div>
+                                    <div class="site_type"><span>관공서</span></div>
+                                    <div class="site_link"><a href="http://grmall.cyso.co.kr"
+                                            target="_blank">grmall.cyso.co.kr<i class="fa fa-external-link-alt"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-prev"
+                            data-swiper-slide-index="0" style="width: 275px;"><img
+                                src="https://newwebon.webonomics.co.kr/storage/client/thumb-75171c8f_screencapture-icanu-webonomics-co-kr-index-php-2024-02-06-10_02_09_400.jpg">
+                            <div class="hover">
+                                <div class="hover_in">
+                                    <div class="site_name">국립안동대학교 대외협력본부</div>
+                                    <div class="site_type"><span>학교</span></div>
+                                    <div class="site_link"><a href="http://icanu.webonomics.co.kr"
+                                            target="_blank">icanu.webonomics.co.kr<i
+                                                class="fa fa-external-link-alt"></i></a></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-active"
+                            data-swiper-slide-index="1" style="width: 275px;"><img
+                                src="https://newwebon.webonomics.co.kr/storage/client/thumb-27bbe892_NONE_400.jpg">
+                            <div class="hover">
+                                <div class="hover_in">
+                                    <div class="site_name">안동시공무원노동조합</div>
+                                    <div class="site_type"><span>관공서</span></div>
+                                    <div class="site_link"><a href="http://acsu.or.kr" target="_blank">acsu.or.kr<i
+                                                class="fa fa-external-link-alt"></i></a></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-next"
+                            data-swiper-slide-index="2" style="width: 275px;"><img
+                                src="https://newwebon.webonomics.co.kr/storage/client/thumb-41c0f296_screencapture-gsnb-or-kr-2024-02-06-10_08_06_400.jpg">
+                            <div class="hover">
+                                <div class="hover_in">
+                                    <div class="site_name">금성노인복지관</div>
+                                    <div class="site_type"><span>단체</span></div>
+                                    <div class="site_link"><a href="http://www.gsnb.or.kr"
+                                            target="_blank">www.gsnb.or.kr<i class="fa fa-external-link-alt"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="3"
+                            style="width: 275px;"><img
+                                src="https://newwebon.webonomics.co.kr/storage/client/thumb-07ad6fef_screencapture-mgse-or-kr-2024-02-06-10_14_09_400.jpg">
+                            <div class="hover">
+                                <div class="hover_in">
+                                    <div class="site_name">문경시 사회적기업 통합안내 홈페이지</div>
+                                    <div class="site_type"><span>단체</span></div>
+                                    <div class="site_link"><a href="http://mgse.or.kr" target="_blank">mgse.or.kr<i
+                                                class="fa fa-external-link-alt"></i></a></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="4"
+                            style="width: 275px;"><img
+                                src="https://newwebon.webonomics.co.kr/storage/client/thumb-02e55750_screencapture-everchem-kr-2024-02-06-10_15_53_400.jpg">
+                            <div class="hover">
+                                <div class="hover_in">
+                                    <div class="site_name">태성산업-Evercolor</div>
+                                    <div class="site_type"><span>기업</span></div>
+                                    <div class="site_link"><a href="http://everchem.kr" target="_blank">everchem.kr<i
+                                                class="fa fa-external-link-alt"></i></a></div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <div class="portfolioSlide02_wrap">
+
+                <!-- <div class="portfolioSlide02_control"> 
+                <a class="portfolioSlide2-prev">prev</a> 
+                <a class="portfolioSlide2-next">next</a> 
+                </div> -->
+
+                <div class="portfolioSlide02 portfolioSlide swiper-container-horizontal">
+                    <ul class="swiper-wrapper"
+                        style="transform: translate3d(-1375px, 0px, 0px); transition-duration: 0ms;">
+                        <li class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-next"
+                            data-swiper-slide-index="2" style="width: 275px;"><img
+                                src="https://newwebon.webonomics.co.kr/storage/client/thumb-04604f71_screencapture-pct-gbcare-or-kr-2024-02-06-10_21_47_400.jpg">
+                            <div class="hover">
+                                <div class="hover_in">
+                                    <div class="site_name">경북형 영유아 맞춤형 발달증진 프로그램</div>
+                                    <div class="site_type"><span>관공서</span></div>
+                                    <div class="site_link"><a href="http://pct.gbcare.or.kr"
+                                            target="_blank">pct.gbcare.or.kr<i class="fa fa-external-link-alt"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="3"
+                            style="width: 275px;"><img
+                                src="https://newwebon.webonomics.co.kr/storage/client/thumb-3ecb6a39_screencapture-leblancdress-2024-02-06-10_22_54_400.jpg">
+                            <div class="hover">
+                                <div class="hover_in">
+                                    <div class="site_name">르블랑웨딩</div>
+                                    <div class="site_type"><span>관공서</span></div>
+                                    <div class="site_link"><a href="http://leblancdress.com"
+                                            target="_blank">leblancdress.com<i class="fa fa-external-link-alt"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="4"
+                            style="width: 275px;"><img
+                                src="https://newwebon.webonomics.co.kr/storage/client/thumb-b7bee547_111_400.jpg">
+                            <div class="hover">
+                                <div class="hover_in">
+                                    <div class="site_name">평택팜(평택시 공식쇼핑몰)</div>
+                                    <div class="site_type"><span>관공서</span></div>
+                                    <div class="site_link"><a href="http://ptfarm.co.kr" target="_blank">ptfarm.co.kr<i
+                                                class="fa fa-external-link-alt"></i></a></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="5"
+                            style="width: 275px;"><img
+                                src="https://newwebon.webonomics.co.kr/storage/client/thumb-a48e3d05_screencapture-gcmall-cyso-co-kr-2024-02-06-10_23_59_400.jpg">
+                            <div class="hover">
+                                <div class="hover_in">
+                                    <div class="site_name">김천시 온라인 쇼핑몰 구축</div>
+                                    <div class="site_type"><span>기타</span></div>
+                                    <div class="site_link"><a href="http://gcmall.cyso.co.kr"
+                                            target="_blank">gcmall.cyso.co.kr<i class="fa fa-external-link-alt"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="swiper-slide swiper-slide-prev" data-swiper-slide-index="0" style="width: 275px;">
+                            <img
+                                src="https://newwebon.webonomics.co.kr/storage/client/thumb-6cb01a49_screencapture-seungshin-2024-02-06-10_17_05_400.jpg">
+                            <div class="hover">
+                                <div class="hover_in">
+                                    <div class="site_name">주식회사 승신</div>
+                                    <div class="site_type"><span>기업</span></div>
+                                    <div class="site_link"><a href="http://seungshin.com"
+                                            target="_blank">seungshin.com<i class="fa fa-external-link-alt"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="swiper-slide swiper-slide-active" data-swiper-slide-index="1" style="width: 275px;">
+                            <img
+                                src="https://newwebon.webonomics.co.kr/storage/client/thumb-e8196aa9_screencapture-gjagro-co-kr-2024-02-06-10_21_14_400.jpg">
+                            <div class="hover">
+                                <div class="hover_in">
+                                    <div class="site_name">광진기업 공식홈페이지</div>
+                                    <div class="site_type"><span>관공서</span></div>
+                                    <div class="site_link"><a href="http://gjagro.co.kr" target="_blank">gjagro.co.kr<i
+                                                class="fa fa-external-link-alt"></i></a></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="swiper-slide swiper-slide-next" data-swiper-slide-index="2" style="width: 275px;">
+                            <img
+                                src="https://newwebon.webonomics.co.kr/storage/client/thumb-04604f71_screencapture-pct-gbcare-or-kr-2024-02-06-10_21_47_400.jpg">
+                            <div class="hover">
+                                <div class="hover_in">
+                                    <div class="site_name">경북형 영유아 맞춤형 발달증진 프로그램</div>
+                                    <div class="site_type"><span>관공서</span></div>
+                                    <div class="site_link"><a href="http://pct.gbcare.or.kr"
+                                            target="_blank">pct.gbcare.or.kr<i class="fa fa-external-link-alt"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="swiper-slide" data-swiper-slide-index="3" style="width: 275px;"><img
+                                src="https://newwebon.webonomics.co.kr/storage/client/thumb-3ecb6a39_screencapture-leblancdress-2024-02-06-10_22_54_400.jpg">
+                            <div class="hover">
+                                <div class="hover_in">
+                                    <div class="site_name">르블랑웨딩</div>
+                                    <div class="site_type"><span>관공서</span></div>
+                                    <div class="site_link"><a href="http://leblancdress.com"
+                                            target="_blank">leblancdress.com<i class="fa fa-external-link-alt"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="swiper-slide" data-swiper-slide-index="4" style="width: 275px;"><img
+                                src="https://newwebon.webonomics.co.kr/storage/client/thumb-b7bee547_111_400.jpg">
+                            <div class="hover">
+                                <div class="hover_in">
+                                    <div class="site_name">평택팜(평택시 공식쇼핑몰)</div>
+                                    <div class="site_type"><span>관공서</span></div>
+                                    <div class="site_link"><a href="http://ptfarm.co.kr" target="_blank">ptfarm.co.kr<i
+                                                class="fa fa-external-link-alt"></i></a></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="swiper-slide" data-swiper-slide-index="5" style="width: 275px;"><img
+                                src="https://newwebon.webonomics.co.kr/storage/client/thumb-a48e3d05_screencapture-gcmall-cyso-co-kr-2024-02-06-10_23_59_400.jpg">
+                            <div class="hover">
+                                <div class="hover_in">
+                                    <div class="site_name">김천시 온라인 쇼핑몰 구축</div>
+                                    <div class="site_type"><span>기타</span></div>
+                                    <div class="site_link"><a href="http://gcmall.cyso.co.kr"
+                                            target="_blank">gcmall.cyso.co.kr<i class="fa fa-external-link-alt"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-prev"
+                            data-swiper-slide-index="0" style="width: 275px;"><img
+                                src="https://newwebon.webonomics.co.kr/storage/client/thumb-6cb01a49_screencapture-seungshin-2024-02-06-10_17_05_400.jpg">
+                            <div class="hover">
+                                <div class="hover_in">
+                                    <div class="site_name">주식회사 승신</div>
+                                    <div class="site_type"><span>기업</span></div>
+                                    <div class="site_link"><a href="http://seungshin.com"
+                                            target="_blank">seungshin.com<i class="fa fa-external-link-alt"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-active"
+                            data-swiper-slide-index="1" style="width: 275px;"><img
+                                src="https://newwebon.webonomics.co.kr/storage/client/thumb-e8196aa9_screencapture-gjagro-co-kr-2024-02-06-10_21_14_400.jpg">
+                            <div class="hover">
+                                <div class="hover_in">
+                                    <div class="site_name">광진기업 공식홈페이지</div>
+                                    <div class="site_type"><span>관공서</span></div>
+                                    <div class="site_link"><a href="http://gjagro.co.kr" target="_blank">gjagro.co.kr<i
+                                                class="fa fa-external-link-alt"></i></a></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-next"
+                            data-swiper-slide-index="2" style="width: 275px;"><img
+                                src="https://newwebon.webonomics.co.kr/storage/client/thumb-04604f71_screencapture-pct-gbcare-or-kr-2024-02-06-10_21_47_400.jpg">
+                            <div class="hover">
+                                <div class="hover_in">
+                                    <div class="site_name">경북형 영유아 맞춤형 발달증진 프로그램</div>
+                                    <div class="site_type"><span>관공서</span></div>
+                                    <div class="site_link"><a href="http://pct.gbcare.or.kr"
+                                            target="_blank">pct.gbcare.or.kr<i class="fa fa-external-link-alt"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="3"
+                            style="width: 275px;"><img
+                                src="https://newwebon.webonomics.co.kr/storage/client/thumb-3ecb6a39_screencapture-leblancdress-2024-02-06-10_22_54_400.jpg">
+                            <div class="hover">
+                                <div class="hover_in">
+                                    <div class="site_name">르블랑웨딩</div>
+                                    <div class="site_type"><span>관공서</span></div>
+                                    <div class="site_link"><a href="http://leblancdress.com"
+                                            target="_blank">leblancdress.com<i class="fa fa-external-link-alt"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!--portfolio slide-->
+
+
+
+        </section>
+
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                var portfolioSlide01 = new Swiper('.portfolioSlide01', {
+                    slidesPerView: 4,  //한번에 보여지는 슬라이드 개수
+                    loopAdditionalSlides: 1,
+                    spaceBetween: 0,  //마진값			  
+                    initialSlide: 0, //시작위치값
+                    roundLengths: true,	//일반 해상도 화면에서 텍스트가 흐려지는 것을 방지하기 위해 슬라이드 너비와 높이 값을 반올림	 
+                    loop: true,
+                    speed: 6000,
+                    autoplay: {
+                        delay: 1,
+                    },
+                    navigation: {   // 버튼 
+                        prevEl: ".portfolioSlide-prev",
+                        nextEl: ".portfolioSlide-next",
+                    },
+                    breakpoints: {
+                        992: {
+                            slidesPerView: 3,
+                        },
+                        667: {
+                            slidesPerView: 2,
+                        },
+                    },
+
+                });
+                var portfolioSlide02 = new Swiper('.portfolioSlide02', {
+                    slidesPerView: 4,  //한번에 보여지는 슬라이드 개수
+                    spaceBetween: 0,  //마진값			  
+                    initialSlide: 0, //시작위치값
+                    roundLengths: true,	//일반 해상도 화면에서 텍스트가 흐려지는 것을 방지하기 위해 슬라이드 너비와 높이 값을 반올림	 
+                    loop: true,
+                    speed: 6000,
+                    autoplay: {
+                        delay: 1,
+                        //reverseDirection: true,
+                        //disableOnInteraction: false,
+                    },
+                    navigation: {   // 버튼 
+                        prevEl: ".portfolioSlide2-prev",
+                        nextEl: ".portfolioSlide2-next",
+                    },
+                    breakpoints: {
+                        992: {
+                            slidesPerView: 3,
+                        },
+                        667: {
+                            slidesPerView: 2,
+                        },
+                    },
+
+                });
+            });
+        </script>
+
+        <!-- section04-->
+
+
+
+        <!-- section05-->
+        <section class="main_section05">
+            <div class="at-container">
+                <div class="mainTitle">고객의 성공을 생각하는 자가 <strong>고객을 성공하게 만듭니다.</strong></div>
+
+
+                <h2>빠른 견적문의</h2>
+                <div class="main_qna_form">
+                    <form name="reqform" id="reqform" onsubmit="return reqform_submit(this);" method="post">
+                        <input type="hidden" name="page_id" value="request">
+                        <div class="form_inner">
+                            <ul>
+                                <li><input type="text" name="request_company" class="inputbox" placeholder="업체명(성함)"
+                                        required=""></li>
+                                <li><input type="text" name="request_hp" class="inputbox" placeholder="연락처" required="">
+                                </li>
+                            </ul>
+                            <button type="submit" class="submit_btn">신청</button>
+                        </div>
+                        <div class="main_qna_agree"><input name="agree" id="agree" type="checkbox" value="1"><label
+                                for="agree"> 개인정보 수집 및 이용동의 </label> <a href="#agree1" class="fancybox">내용보기</a></div>
+                    </form>
+                </div>
+
+                <div class="" id="agree1" style="display:none;">
+                    [개인정보의 수집 및 이용목적]<br>
+                    수집한 개인정보를 다음의 목적을 위해 활용합니다.<br>
+                    ο 서비스 제공에 관한 계약 이행 및 서비스 제공에 따른 콘텐츠 제공 등<br>
+                    ο 회원 관리<br>
+                    회원제 서비스 이용에 따른 본인확인 , 불만처리 등 민원처리 , 고지사항 전달<br>
+                    ο 마케팅 및 광고에 활용<br>
+                    이벤트 등 광고성 정보 전달<br>
+                    <br>
+                    [수집하는 개인정보 항목]<br>
+                    회사는 회원가입, 상담, 서비스 신청 등을 위해 아래와 같은 개인정보를 수집하고 있습니다.<br>
+                    ο 필수항목 : 아이디, 비밀번호, 이름, 이메일, 휴대전화<br>
+                    ο 선택항목 : 주소, 정보공개, 메일 및 문자서비스 또한 서비스 이용과정이나 사업 처리 과정에서 아래와 같은 정보들이 생성되어 수집될 수 있습니다.<br>
+                    ο 서비스 이용기록: 접속 로그, 쿠키, 접속 IP 정보, 결제기록, 이용정지 기록<br>
+                    ο 개인정보 수집방법 : 홈페이지(회원가입,고객센터) , 서면양식 , 전화/팩스를 통한 회원가입<br>
+                    <br>
+                    [개인정보의 보유 및 이용기간]<br>
+                    원칙적으로, 개인정보 수집 및 이용목적이 달성된 후에는 해당 정보를 지체없이 파기합니다. <br>
+                    단, “전자상거래 등에서의 소비자 보호에 관한 법률” 등 관련 법령의 규정에 의하여 보존할 필요가 있는 경우 관계 법령에서 정한 일정기간동안 회원정보를 보관합니다. 당해 정보는 그
+                    보관의 목적으로만 이용하며 보존기간은 아래와 같습니다.<br>
+                    1) 고객 관리 : 회원가입 해지시까지<br>
+                    2) 계약 또는 청약철회 등에 관한 기록 : 5년<br>
+                    3) 대금결제 및 재화 등의 공급에 관한 기록 : 5년<br>
+                    4) 소비자의 불만 또는 분쟁처리에 관한 기록 : 3년<br>
+                    5) 표시·광고에 관한 기록 : 6개월<br>
+                    <br>
+                    [개인정보 수집 동의 거부 권리]<br>
+                    회사는 보다 원활한 서비스 제공을 위해 기본정보 이외의 추가정보(선택항목)를 수집하고 있습니다.<br>
+                    추가정보는 회원에게 보다 나은 서비스를 제공하기 위한 것으로, 회원이 원하지 않을 경우, 해당 정보는 수집하지 않으며, 이로 인해 이용 상의 어떤 불이익도 발행하지 않습니다.
+                </div>
+
+                <script type="text/javascript">
+                    function reqform_submit(f) {
+                        var params = $('#reqform').serialize();
+
+                        if ($('#agree').is(':checked') == false) {
+                            alert("개인정보 수집 및 이용에 동의해주세요.");
+                            $("#agree").focus();
+                            return false;
+                        }
+
+                        $.ajax({
+                            type: 'POST',
+                            url: '/page/contentUpdate',
+                            data: params,
+                            cache: false,
+                            async: false,
+                            success: function (data) {
+                                if (data.indexOf("문의가 성공적으로 등록되었습니다.") !== -1) {
+                                    alert("문의가 성공적으로 등록되었습니다.\n빠른 시일 내에 연락드리겠습니다.");
+                                    $("input[name=request_company]").val('');
+                                    $("input[name=request_hp]").val('');
+                                } else {
+                                    alert("문의 등록이 실패하였습니다.");
+                                }
+                            }
+                        });
+
+                        return false;
+                    }
+                </script>
+
+
+            </div>
+        </section>
+        <!-- section05 -->
+
+        <!-- main end -->
+
+        <script></script>
+        <!-- </div> --> <!-- end content -->
+
+        <!-- footer -->
+        <div class="at-footer">
+            <div class="at-container">
+
+                <div class="at-footermenu">
+                    <ul class="footermenu">
+                        <li><a href="/page/intro">회사소개</a></li>
+                        <li><a href="/page/provision">이용약관</a></li>
+                        <li><a href="/page/pravicy"><strong>개인정보처리방침</strong></a></li>
+                    </ul>
+
+                    <ul class="at-footer-sns">
+                        <li><a href="https://www.facebook.com/profile.php?id=61553833945127" target="_blank"
+                                class="facebook">페이스북</a></li>
+                        <li><a href="https://blog.naver.com/webon5077" target="_blank" class="naverblog">블로그</a></li>
+                    </ul>
+                </div>
+
+                <div class="at-copyright">
+                    <h1><img src="/img/copy_logo.png" alt=""></h1>
+                    <address>
+                        <span>상호 : (주)웨보노믹스</span><span>대표 : 김용군</span><span>사업자등록번호 :
+                            508-81-08034</span><span>개인정보관리책임자 : 장미숙</span><br>
+                        <span>대표전화 : 054-841-5077</span><span>이메일 : webon@hanmail.net</span><span>Fax :
+                            054-841-5377</span><br>
+                        <span>본사 : (우:36759) 경북 안동시 풍천면 천년숲서로 7-19 화인비즈니스타운 2층 201호</span><span>서울지점 : (우:06762) 서울 서초구
+                            바우뫼로7길 8, B2</span>
+                        <p>Copyright ⓒ ㈜웨보노믹스. All rights reserved.</p>
+                    </address>
+
+                    <div class="at-footer-telinfo">
+                        <strong>1644-4548</strong>
+                        <ul>
+                            <li><b>F.</b> 054-841-5377</li>
+                            <li><b>E.</b> webon@hanmail.net</li>
+                        </ul>
+                        <p>평일 09:00 ~ 18:00 (점심시간 12:00~13:00)<br>토/일/공휴일 휴무</p>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+        <!-- footer -->
+
+        <button type="button" id="top_btn"><i class="fa fa-chevron-up" aria-hidden="true"></i><span>TOP</span></button>
+
+        <script>
+
+            $(function () {
+                $("#top_btn").on("click", function () {
+                    $("html, body").stop().animate({ scrollTop: 0 }, '500');
+                    return false;
+                });
+            });
+        </script>
+
+    </div> <!-- end wrap -->
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="Title" content="오시는길">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="오시는길">
+    <meta property="og:url" content="https://newwebon.webonomics.co.kr">
+    <meta property="og:site_name" content="오시는길">
+    <meta name="Description" content="Since 1999, 웹에이전시 24년차 믿을 수 있는 기업 1999년 순수하게 웹에이전시로 출발한 ㈜웨보노믹스입니다.">
+    <meta property="og:description" content="Since 1999, 웹에이전시 24년차 믿을 수 있는 기업 1999년 순수하게 웹에이전시로 출발한 ㈜웨보노믹스입니다.">
+    <meta name="Author" content="웨보노믹스">
+    <meta name="Keywords" content="웨보노믹스,웹에이전시,웹개발">
+    <meta property="og:image" content="https://newwebon.webonomics.co.kr/storage/config/2D6SomUi_e45c1d.png">
+    <link rel="icon" href="https://newwebon.webonomics.co.kr/storage/config/Nja1Gni7_b7426e.ico" type="image/x-icon">
+    <title>오시는길</title>
+    <script src="/js/jquery-3.7.1.min.js?ver=231011"></script>
+    <script src="/js/jquery-ui.min.js?ver=231011"></script>
+    <script src="/js/app.js?ver=231011"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+    <link rel="stylesheet" href="/css/app.css?ver=231011">
+    <link rel="stylesheet" href="/css/font-awesome/css/font-awesome.min.css?ver=231011">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="/js/swiper/swiper.min.css">
+    <script src="/js/swiper/swiper.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.fancybox.js?v=2.1.4"></script>
+    <link rel="stylesheet" type="text/css" href="/js/jquery.fancybox.css?v=2.1.4" media="screen">
+    <link rel="stylesheet" href="/css/template/menu/default-dropdown/reset.css">
+    <link rel="stylesheet" href="/css/template/menu/default-dropdown/style.css">
+    <script>
+
+        jQuery(function ($) {
+
+
+            //스크롤 따라다니는 메뉴박스 만들기
+            $(window).scroll(function () {
+
+
+                if ($(this).scrollTop() > 200) {
+                    $(".at-header").addClass('fixed');
+
+                }
+                else {
+                    $(".at-header").removeClass('fixed');
+                }
+
+            });
+
+
+
+            $(".at-open-menu").click(function (e) {
+                $(".all_menu_wrap").animate({ right: 0 }, '300');
+                $(".all_menu_close_btn").show();
+            });
+
+
+            $(".all_menu_close,.all_menu_close_btn").click(function (e) {
+                $(".all_menu_wrap").animate({ right: "-100%" }, '300');
+                $(".all_menu_close_btn").hide();
+            });
+
+
+            var bw = $("body").width();
+            $(window).resize(function () {
+                bw = $("body").width();
+            });
+
+            if (bw >= 992) {
+
+
+            } else {
+
+                $(".all_menu_box li .depth01").click(function () {
+                    $(this).parent().toggleClass("active").siblings().removeClass("active");
+                });
+
+            }
+
+
+            $(".history_year").click(function () { //Fire the click event 
+
+
+                $(this).parent("div").find(".history_content").slideToggle();
+                $(this).find("i").toggleClass("minus");
+                $(this).find("span").toggleClass("active");
+
+
+                return false; //prevent page scrolling on tab click
+            });
+
+
+            $(".history_tabbox").hide(); // Hide all tab content divs by default
+            $(".history_tabbox#history4").show(); // Show the first div of tab content by default
+
+            $(".history_tab ul li a").click(function () { //Fire the click event
+
+                var activeTab = $(this).attr("href"); // Catch the click link
+                $(".history_tab ul li a").removeClass("active"); // Remove pre-highlighted link
+                $(this).addClass("active"); // set clicked link to highlight state
+                $(".history_tabbox").hide(); // hide currently visible tab content div 
+                $(activeTab).fadeIn(); // show the target tab content div by matching clicked link.
+
+                return false; //prevent page scrolling on tab click
+            });
+
+        });
+
+        $(document).ready(function () {
+
+            $(".fancybox").fancybox({
+                maxWidth: 658,
+                maxHeight: 710,
+                fitToView: false,
+                width: '100%',
+                height: '100%',
+                autoSize: false,
+                autoCenter: false,
+                closeClick: false,
+                openEffect: 'none',
+                closeEffect: 'none'
+            });
+
+            $(".history_box.active a.history_year").trigger("click");
+
+
+        });
+    </script>
+        <link rel="stylesheet" href="https://t1.daumcdn.net/kakaomapweb/place/jscss/roughmap/6af7869e/roughmapLander.css">
+        <script src="//ssl.daumcdn.net/dmaps/map_js_init/v3.js?autoload=false"></script>
+        <script src="https://t1.daumcdn.net/mapjsapi/js/main/4.4.14/v3.js"></script>
+</head>
+
+<body>
+
+
+3
+    <script>
+
+        jQuery(function ($) {
+
+
+
+            $(".at-open-menu").click(function (e) {
+                $(".all_menu_wrap").animate({ right: 0 }, '300');
+                $(".all_menu_close_btn").show();
+            });
+
+
+            $(".all_menu_close,.all_menu_close_btn").click(function (e) {
+                $(".all_menu_wrap").animate({ right: "-100%" }, '300');
+                $(".all_menu_close_btn").hide();
+            });
+
+
+
+
+        });
+    </script>
+
+    <!-- 전체 메뉴 -->
+    <button class="all_menu_close_btn"></button>
+    <div class="all_menu_wrap">
+        <div class="at-container">
+            <div class="all_menu_close"></div>
+            <div class="all_menu_box">
+
+                <div class="all_menu_btn_set">
+                    <a href="/login">로그인</a>
+                    <a href="/register">사용자가입</a>
+                    <a href="/page/notice">공지사항</a>
+                </div>
+
+                <ul>
+                    <li>
+                        <div class="depth01"><a href="/page/intro">회사소개</a></div><a href="/page/intro">
+                        </a>
+                        <ul class="depth02"><a href="/page/intro">
+                            </a>
+                            <li><a href="/page/intro"></a><a href="/page/intro">회사소개</a></li>
+
+                            <li><a href="history.html">회사연혁</a></li>
+
+                            <li><a href="/page/organization">조직도</a></li>
+
+                            <li><a href="location.html">오시는 길</a></li>
+                            
+                            <li><a href="board/list.php">게시판 작성</a></li>
+
+                        </ul>
+                    </li>
+                    <li>
+                        <div class="depth01"><a href="/page/homepage">서비스</a></div><a href="/page/homepage">
+                        </a>
+                        <ul class="depth02"><a href="/page/homepage">
+                            </a>
+                            <li><a href="/page/homepage"></a><a href="/page/homepage">홈페이지 제작</a></li>
+
+                            <li><a href="/page/shoppingmall">쇼핑몰 제작/운영</a></li>
+
+                            <li><a href="/page/solution">솔루션 개발</a></li>
+
+                            <li><a href="/page/mobileapp">모바일 앱 개발</a></li>
+
+                        </ul>
+                    </li>
+                    <li>
+                        <div class="depth01"><a href="/portfolio">포트폴리오</a></div><a href="/portfolio">
+                            <ul class="depth02">
+                            </ul>
+                        </a>
+                    </li><a href="/portfolio">
+                    </a>
+                    <li><a href="/portfolio"></a>
+                        <div class="depth01"><a href="/portfolio"></a><a href="/page/request/form">견적문의</a></div><a
+                            href="/page/request/form">
+                            <ul class="depth02">
+                            </ul>
+                        </a>
+                    </li><a href="/page/request/form">
+                    </a>
+                    <li><a href="/page/request/form"></a>
+                        <div class="depth01"><a href="/page/request/form"></a><a href="/support">수정의뢰</a></div><a
+                            href="/support">
+                            <ul class="depth02">
+                            </ul>
+                        </a>
+                    </li><a href="/support">
+                    </a>
+                </ul><a href="/support">
+
+                </a>
+            </div><a href="/support">
+            </a>
+        </div><a href="/support">
+        </a>
+    </div><a href="/support">
+        <!-- 전체 메뉴 -->
+
+
+    </a>
+    <div class="wrap"><a href="/support">
+
+            <!-- header -->
+        </a>
+        <div class="at-header"><a href="/support">
+            </a>
+            <div class="main_wrap"><a href="/support">
+                </a>
+                <h1><a href="/support"></a><a href="/"><img
+                            src="https://newwebon.webonomics.co.kr/storage/config/KglCr0je_80de1a.png" alt=""></a></h1>
+
+                <!-- gnb -->
+                <div class="at-menu">
+                    <ul class="gnb">
+                        <li><a href="/page/intro" class="parent"><span>회사소개</span></a>
+                            <ul class="snb">
+                                <li><a href="/page/intro">회사소개</a></li>
+
+                                <li><a href="history.html">회사연혁</a></li>
+
+                                <li><a href="/page/organization">조직도</a></li>
+
+                                <li><a href="location.html">오시는 길</a></li>
+
+                            </ul>
+                        </li>
+                        <li><a href="/page/homepage" class="parent"><span>서비스</span></a>
+                            <ul class="snb">
+                                <li><a href="/page/homepage">홈페이지 제작</a></li>
+
+                                <li><a href="/page/shoppingmall">쇼핑몰 제작/운영</a></li>
+
+                                <li><a href="/page/solution">솔루션 개발</a></li>
+
+                                <li><a href="/page/mobileapp">모바일 앱 개발</a></li>
+
+                            </ul>
+                        </li>
+                        <li><a href="/portfolio" class="parent"><span>포트폴리오</span></a>
+                            <ul class="snb">
+                            </ul>
+                        </li>
+                        <li><a href="/page/request/form" class="parent"><span>견적문의</span></a>
+                            <ul class="snb">
+                            </ul>
+                        </li>
+                        <li><a href="/support" class="parent"><span>수정의뢰</span></a>
+                            <ul class="snb">
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <!-- gnb -->
+
+
+                <div class="at-open-menu">
+                    <span class="line"></span>
+                    <span class="line"></span>
+                    <span class="line"></span>
+                </div>
+
+            </div>
+        </div>
+        <!-- header -->
+
+
+
+        <!--<div class="main_section01_link">
+                    <a href="/page/request/form">
+                    <div class="icon"><img src="/img/paper_plane.png" alt=""></div>
+                    <p>빠른 견적문의</p>
+                    </a>
+                    </div>-->
+
+        <!-- <div class="wrap"> -->
+
+        <!-- <div class="sub_content"> -->
+
+
+        <div>
+
+            <!-- <h2>오시는길</h2> -->
+
+
+            <!-- 오시는길 start -->
+
+
+            <div class="at-container">
+                <div class="subTitle">
+                    <sub>LOCATION</sub>
+                    <h2><span class="dot_style">오시는길</span></h2>
+                </div>
+
+
+
+
+
+                <div class="location_area">
+                    <!-- * 카카오맵 - 지도퍼가기 -->
+                    <!-- 1. 지도 노드 -->
+                    <div id="daumRoughmapContainer1706850022134" class="root_daum_roughmap root_daum_roughmap_landing">
+                        
+                        
+                    </div>
+
+                    <!--
+                            2. 설치 스크립트
+                            * 지도 퍼가기 서비스를 2개 이상 넣을 경우, 설치 스크립트는 하나만 삽입합니다.
+                        -->
+                    <script charset="UTF-8" class="daum_roughmap_loader_script"
+                        src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>
+                    <script charset="UTF-8"
+                        src="https://t1.daumcdn.net/kakaomapweb/place/jscss/roughmap/6af7869e/roughmapLander.js"></script>
+
+                    <!-- 3. 실행 스크립트 -->
+                    <script charset="UTF-8">
+                        new daum.roughmap.Lander({
+                            "timestamp": "1706850022134",
+                            "key": "2hxmo",
+                            //"mapWidth" : "640",
+                            "mapHeight": "720"
+                        }).render();
+                    </script>
+
+                    <div class="location_info">
+                        <ul>
+                            <li><span>Address</span> 경북 안동시 풍천면 천년숲서로 7-19, 201~203</li>
+                            <li><span>CS Center</span> TEL. 1644-4548 / FAX. 054-841-5377</li>
+                        </ul>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+
+            <!-- 오시는길 end -->
+
+
+        </div>
+        <script>$(document).ready(function () {
+                $(".hidden_menu1").hide();
+
+                $(".loc_menu_show").click(function (e) {
+                    e.preventDefault();
+
+                    $(".hidden_menu1").not($(this).closest('li').find('.hidden_menu1')).hide();
+
+                    $(this).closest('li').find('.hidden_menu1').toggle();
+
+                    $(this).closest('.menu_container').mouseleave(function (e) {
+                        $(this).closest('li').find('.hidden_menu1').hide();
+
+                        $(this).unbind(e);
+                    });
+                });
+            });</script>
+        <!-- </div> --> <!-- end content -->
+
+        <!-- footer -->
+        <div class="at-footer">
+            <div class="at-container">
+
+                <div class="at-footermenu">
+                    <ul class="footermenu">
+                        <li><a href="/page/intro">회사소개</a></li>
+                        <li><a href="/page/provision">이용약관</a></li>
+                        <li><a href="/page/pravicy"><strong>개인정보처리방침</strong></a></li>
+                    </ul>
+
+                    <ul class="at-footer-sns">
+                        <li><a href="https://www.facebook.com/profile.php?id=61553833945127" target="_blank"
+                                class="facebook">페이스북</a></li>
+                        <li><a href="https://blog.naver.com/webon5077" target="_blank" class="naverblog">블로그</a></li>
+                    </ul>
+                </div>
+
+                <div class="at-copyright">
+                    <h1><img src="/img/copy_logo.png" alt=""></h1>
+                    <address>
+                        <span>상호 : (주)웨보노믹스</span><span>대표 : 김용군</span><span>사업자등록번호 :
+                            508-81-08034</span><span>개인정보관리책임자 : 장미숙</span><br>
+                        <span>대표전화 : 054-841-5077</span><span>이메일 : webon@hanmail.net</span><span>Fax :
+                            054-841-5377</span><br>
+                        <span>본사 : (우:36759) 경북 안동시 풍천면 천년숲서로 7-19 화인비즈니스타운 2층 201호</span><span>서울지점 : (우:06762) 서울 서초구
+                            바우뫼로7길 8, B2</span>
+                        <p>Copyright ⓒ ㈜웨보노믹스. All rights reserved.</p>
+                    </address>
+
+                    <div class="at-footer-telinfo">
+                        <strong>1644-4548</strong>
+                        <ul>
+                            <li><b>F.</b> 054-841-5377</li>
+                            <li><b>E.</b> webon@hanmail.net</li>
+                        </ul>
+                        <p>평일 09:00 ~ 18:00 (점심시간 12:00~13:00)<br>토/일/공휴일 휴무</p>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+        <!-- footer -->
+
+        <button type="button" id="top_btn"><i class="fa fa-chevron-up" aria-hidden="true"></i><span>TOP</span></button>
+
+        <script>
+
+            $(function () {
+                $("#top_btn").on("click", function () {
+                    $("html, body").stop().animate({ scrollTop: 0 }, '500');
+                    return false;
+                });
+            });
+        </script>
+
+    </div> <!-- end wrap -->
+
+
+
+
+</body>
+
+</html>
