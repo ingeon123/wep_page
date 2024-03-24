@@ -259,6 +259,8 @@
 
                                 <li><a href="location.html">오시는 길</a></li>
 
+                                <li><a href="list.php">게시판 작성</a></li>
+
                             </ul>
                         </li>
                         <li><a href="/page/homepage" class="parent"><span>서비스</span></a>
