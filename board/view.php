@@ -2,18 +2,18 @@
 <?php
     include("../header.php");
 
-    $db = new mysqli("localhost","root","1755","board");
+    $db = new mysqli("localhost","root","1755","web");
     $query = "select * from board  where no = '".$_GET['no']."'";
     $res = $db->query($query);
     $view = $res->fetch_array();
 
-    $query = "select * from coment  where post_no = '".$_GET['no']."'";
+    $query = "select * from comment  where post_no = '".$_GET['no']."'";
     $res = $db->query($query);
-    $get_coment = $res->fetch_array();
-    $get_coment['post_no']=$view['no'];
-    $get_coment['name']='';
-    $get_coment['content']='';
-    $get_coment['board']=3;
+    $get_comment = $res->fetch_array();
+    $get_comment['post_no']=$view['no'];
+    $get_comment['name']='';
+    $get_comment['content']='';
+    $get_comment['board']=3;
 
     $res->data_seek(0);
 ?>
@@ -43,16 +43,16 @@
             <li><input type="button" id="co_btn" class="btn btn_submit" value="댓글"></li>
         </ul>
     </div>
-    <div id="coment" class="bo_w_info write_div" style="display: none;">
-        <form action="coment.php" method="post">
-            <input type="hidden" name="no" value="<?php echo $get_coment['board']?>">
-            <input type="hidden" name="post_no" value="<?php echo $get_coment['post_no']; ?>">
+    <div id="comment" class="bo_w_info write_div" style="display: none;">
+        <form action="comment.php" method="post">
+            <input type="hidden" name="no" value="<?php echo $get_comment['board']?>">
+            <input type="hidden" name="post_no" value="<?php echo $get_comment['post_no']; ?>">
             <input type="hidden" name="act" value="co">
             <input type="text" name="name" class="frm_inpur full_input" placeholder="글쓴이" required>
             <textarea name="content" class="frm_area" placeholder="내용" required></textarea>
             <div class="bo_v_com">
                 <input type="submit" id="co_submit" class="btn btn_submit" value="작성"
-                <?php $get_coment['board']=$get_coment['board']+1; ?>>
+                <?php $get_comment['board']=$get_comment['board']+1; ?>>
                 <input type="button" id="co_cancel"  class="btn btn_submit" value="취소">
             </div>
         </form>
@@ -62,11 +62,20 @@
                 <th>내용</th>
             </tr>
             <?php
-                while($view_coment = $res->fetch_array()){
+                while($view_comment = $res->fetch_array()){
                 ?>
                 <tr>  
-                    <td class="td_co_name"><?php echo $view_coment['name'];?></td>
-                    <td class="td_co_content"><?php echo $view_coment['content']?></td>
+                    <td class="td_co_name"><?php echo $view_comment['name'];?></td>
+                    <td class="td_co_content"><?php echo $view_comment['content']?></td>
+                    <td>
+                        <input type="button" class="comment_edit btn btn_submit" value="수정"
+                        post_no="<?php echo $view_comment['post_no']?>"
+                        data-no="<?php echo $view_comment['no']; ?>">
+                    </td>
+                    <td><a href="comment.php?no=<?php echo $view_comment['no']; ?>&post_no=<?php echo $view_comment['post_no']; ?>&act=d"
+                    class="btn btn_submit">삭제</a></td>
+                    
+                    
                 </tr>
             <?php
                 }
@@ -75,15 +84,55 @@
     </div>
 </article>
 <script>
-    let coment = document.getElementById("coment");
+    let comment = document.getElementById("comment");
     let co_btn = document.getElementById("co_btn");
-    let co_cancel = document.getElementById("co_cancel")
+
+    document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.comment_edit').forEach(function(button) {
+        button.addEventListener('click', function() {
+            var comment_no = this.getAttribute('data-no');
+            var comment_post_no = this.getAttribute('post_no');
+            var act = "edit";
+
+            console.log(comment_post_no)
+
+            var form = document.createElement('form');
+            form.setAttribute('method', 'POST');
+            form.setAttribute('action', 'comment.php');
+
+            form.innerHTML = `
+                <input type="hidden" name="no" value="${comment_no}">
+                <input type="hidden" name="post_no" value="${comment_post_no}">
+                <input type="hidden" name="act" value="${act}">
+                <input type="text" name="name" placeholder="이름" required>
+                <textarea name="content" placeholder="내용" required></textarea>
+                <input type="submit" class="btn btn_submit" value="댓글 수정">
+            `;
+
+            var parentTr = this.closest('tr');
+            if (parentTr.nextElementSibling && parentTr.nextElementSibling.classList.contains('edit-form')) {
+                parentTr.nextElementSibling.remove();
+                this.value="수정";
+            } else {
+                var formTr = document.createElement('tr');
+                var formTd = document.createElement('td');
+                formTd.setAttribute('colspan', '4'); // 컬럼 수에 맞게 조정
+                formTd.appendChild(form);
+                formTr.appendChild(formTd);
+                formTr.classList.add('edit-form');
+                parentTr.parentNode.insertBefore(formTr, parentTr.nextSibling);
+                this.value="취소";
+            }
+        });
+    });
+});            
+    
 
     co_btn.onclick = function(){
-        coment.style.display = "block";
+        comment.style.display = "block";
     }
     co_cancel.onclick = function(){
-        coment.style.display = "none";
+        comment.style.display = "none";
     }
 </script>
 <?php
