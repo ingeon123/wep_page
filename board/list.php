@@ -1,5 +1,5 @@
 <?php
-    $db = new mysqli("localhost","root","1755","board");
+    $db = new mysqli("localhost","root","1755","web");
     $query = "select * from board";
     $res = $db->query($query);
     $count = $res->num_rows;
