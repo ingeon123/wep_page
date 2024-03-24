@@ -2,10 +2,10 @@
 <?php
     include("../header.php");
     if(isset($_GET['no'])){
-        $db = new mysqli("localhost","root","1755","board");
+        $db = new mysqli("localhost","root","1755","web");
         $query = "select * from board  where no = '".$_GET['no']."'";
         $res = $db->query($query);
-        $form = $res->fetch_array();                
+        $form = $res->fetch_array();       
     }
     else{
         $form['name'] = '';
@@ -16,7 +16,9 @@
 <div>
     <form action="update.php" method="post">
         <div class="bo_w_info write_div">
-            <input type="hidden" name="no" value="<?php echo $form['no'];?>">
+            <?php if(isset($form['no'])): ?>
+                <input type="hidden" name="no" value="<?php echo $form['no']; ?>">
+            <?php endif; ?>
             <input type="hidden" name="act" value="<?php echo $_GET['act']; ?>">
             <input type="text" name="name" class="frm_inpur full_input" placeholder="글쓴이" required
             value="<?php echo $form['name'];?>">
